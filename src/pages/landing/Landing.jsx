@@ -1,4 +1,4 @@
-
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   ShieldCheck,
@@ -6,7 +6,59 @@ import {
   Wallet,
   ArrowRight,
   Lock,
+  Star,
 } from "lucide-react";
+
+const testimonials = [
+  {
+    name: "Thabo Molefe",
+    role: "Young Professional",
+    amount: "R15,000",
+    text: "I successfully withdrew R15,000 after my first investment cycle. The process was smooth and transparent.",
+  },
+  {
+    name: "Naledi Khumalo",
+    role: "Entrepreneur",
+    amount: "R150,000",
+    text: "Withdrew R150,000 from my portfolio. Wealthachiever247 has completely changed how I manage my money.",
+  },
+  {
+    name: "Johan van der Berg",
+    role: "Business Owner",
+    amount: "R200,000",
+    text: "Just received my R200,000 withdrawal. Reliable platform with real results.",
+  },
+  {
+    name: "Ayanda Dlamini",
+    role: "University Student",
+    amount: "R7,000",
+    text: "As a student I started small and already withdrew R7,000. Highly recommend!",
+  },
+  {
+    name: "Lerato Mokoena",
+    role: "Young Lady",
+    amount: "R10,000",
+    text: "Successful withdrawal of R10,000. The dashboard is easy to use and very clear.",
+  },
+  {
+    name: "Sipho Nkosi",
+    role: "Young Guy",
+    amount: "R170,000",
+    text: "Withdrew R170,000 without any issues. This platform delivers on its promises.",
+  },
+  {
+    name: "Fatima Abrahams",
+    role: "Working Mom",
+    amount: "R1,800",
+    text: "Even my first small withdrawal of R1,800 came through quickly. Trustworthy service.",
+  },
+  {
+    name: "Pieter Botha",
+    role: "Investor",
+    amount: "R50,000",
+    text: "Another successful withdrawal of R50,000. Consistent and professional.",
+  },
+];
 
 const Landing = () => {
   return (
@@ -115,6 +167,84 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* About Section */}
+      <section className="border-y border-slate-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold text-blue-600">
+              About Us
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">
+              About Wealthachiever247
+            </h2>
+            <p className="mt-5 text-base leading-7 text-slate-600">
+              Wealthachiever247 is a modern wealth management platform designed
+              to help everyday people grow and control their finances with
+              clarity. We provide a secure environment for deposits,
+              investments, and withdrawals, backed by transparent processes and
+              real-time account tracking.
+            </p>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              Whether you are just starting your financial journey or looking to
+              scale your portfolio, our goal is to give you the tools and
+              confidence to achieve lasting financial progress.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials - Infinite Scroll */}
+      <section className="overflow-hidden py-16">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
+          <div className="mb-10 text-center">
+            <p className="text-sm font-semibold text-blue-600">
+              Success Stories
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-slate-900">
+              Real people. Real withdrawals.
+            </h2>
+            <p className="mt-3 text-slate-500">
+              Join thousands of users who are already growing with us.
+            </p>
+          </div>
+        </div>
+
+        {/* Scrolling track */}
+        <div className="relative">
+          <div className="flex animate-scroll gap-5">
+            {/* Duplicate the list so the scroll loops seamlessly */}
+            {[...testimonials, ...testimonials].map((item, index) => (
+              <div
+                key={index}
+                className="w-[320px] shrink-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              >
+                <div className="flex items-center gap-1 text-amber-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} fill="currentColor" />
+                  ))}
+                </div>
+
+                <p className="mt-4 text-sm leading-6 text-slate-600">
+                  “{item.text}”
+                </p>
+
+                <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+                  <div>
+                    <p className="text-sm font-bold text-slate-900">
+                      {item.name}
+                    </p>
+                    <p className="text-xs text-slate-500">{item.role}</p>
+                  </div>
+                  <div className="rounded-lg bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-600">
+                    {item.amount}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
       <section className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14 text-center md:px-6">
@@ -134,6 +264,25 @@ const Landing = () => {
           </Link>
         </div>
       </section>
+
+      {/* Animation styles */}
+      <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll {
+          animation: scroll 40s linear infinite;
+          width: max-content;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   );
 };
