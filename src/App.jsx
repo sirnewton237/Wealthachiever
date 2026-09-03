@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import DashboardLayout from "./layouts/DashboardLayout/DashboardLayout";
 
+// Landing / Visitor page
+import Landing from "./pages/landing/Landing";
+
 // Auth pages
 import Login from "./pages/auth/Login/Login";
 import Register from "./pages/auth/Register/Register";
@@ -20,8 +23,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* First page when the app opens */}
-        <Route path="/" element={<Register />} />
+        {/* First page visitors see */}
+        <Route path="/" element={<Landing />} />
 
         {/* Auth Routes */}
         <Route path="/login" element={<Login />} />
