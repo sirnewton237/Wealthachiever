@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-import { AuthProvider } from "./store/auth/authStore";
+import { AuthProvider } from "./store/auth/authstore";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
