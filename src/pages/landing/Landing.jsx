@@ -236,13 +236,13 @@ const Landing = () => {
       </section>
 
       {/* Testimonials - Infinite Scroll */}
-      <section className="overflow-hidden py-16">
+      <section className="overflow-hidden text-justify py-16">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mb-10 text-center">
             <p className="text-sm font-semibold text-blue-600">
               Success Stories
             </p>
-            <h2 className="mt-3 text-3xl font-bold text-slate-900">
+            <h2 className="text-center mt-3 text-3xl font-bold text-slate-900">
               Real people. Real withdrawals.
             </h2>
             <p className="mt-3 text-slate-500">
