@@ -214,9 +214,9 @@ const Landing = () => {
       {/* About Section */}
       <section className="border-y border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl text-justify">
             <p className="text-sm font-semibold text-blue-600">About Us</p>
-            <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">
+            <h2 className="mt-3 text-3xl text-center font-bold text-slate-900 md:text-4xl">
               About Wealthachiever247
             </h2>
             <p className="mt-5 text-base leading-7 text-slate-600">
