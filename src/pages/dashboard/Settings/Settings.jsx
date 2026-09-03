@@ -14,7 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../store/auth/authStore";
+import { useAuth } from "../../../store/auth/authstore";
 
 const Settings = () => {
   const navigate = useNavigate();
