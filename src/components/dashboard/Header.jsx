@@ -1,7 +1,7 @@
 import React from "react";
 import { Bell, Menu, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../store/auth/authStore";
+import { useAuth } from "../../store/auth/authstore";
 
 const Header = () => {
   const navigate = useNavigate();
