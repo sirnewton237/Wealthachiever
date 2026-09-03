@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Wallet, ShieldCheck, ArrowRight } from "lucide-react";
-import { useAuth } from "../../../store/auth/authStore";
+import { useAuth } from "../../../store/auth/authstore";
 
 const Deposit = () => {
   const { user } = useAuth();
