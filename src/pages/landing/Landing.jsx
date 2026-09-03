@@ -15,48 +15,56 @@ const testimonials = [
     role: "Young Professional",
     amount: "R15,000",
     text: "I successfully withdrew R15,000 after my first investment cycle. The process was smooth and transparent.",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     name: "Naledi Khumalo",
     role: "Entrepreneur",
     amount: "R150,000",
     text: "Withdrew R150,000 from my portfolio. Wealthachiever247 has completely changed how I manage my money.",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     name: "Johan van der Berg",
     role: "Business Owner",
     amount: "R200,000",
     text: "Just received my R200,000 withdrawal. Reliable platform with real results.",
+    image: "https://randomuser.me/api/portraits/men/75.jpg",
   },
   {
     name: "Ayanda Dlamini",
     role: "University Student",
     amount: "R7,000",
     text: "As a student I started small and already withdrew R7,000. Highly recommend!",
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
     name: "Lerato Mokoena",
     role: "Young Lady",
     amount: "R10,000",
     text: "Successful withdrawal of R10,000. The dashboard is easy to use and very clear.",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
   },
   {
     name: "Sipho Nkosi",
     role: "Young Guy",
     amount: "R170,000",
     text: "Withdrew R170,000 without any issues. This platform delivers on its promises.",
+    image: "https://randomuser.me/api/portraits/men/22.jpg",
   },
   {
     name: "Fatima Abrahams",
     role: "Working Mom",
     amount: "R1,800",
     text: "Even my first small withdrawal of R1,800 came through quickly. Trustworthy service.",
+    image: "https://randomuser.me/api/portraits/women/33.jpg",
   },
   {
     name: "Pieter Botha",
     role: "Investor",
     amount: "R50,000",
     text: "Another successful withdrawal of R50,000. Consistent and professional.",
+    image: "https://randomuser.me/api/portraits/men/41.jpg",
   },
 ];
 
@@ -171,9 +179,7 @@ const Landing = () => {
       <section className="border-y border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold text-blue-600">
-              About Us
-            </p>
+            <p className="text-sm font-semibold text-blue-600">About Us</p>
             <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">
               About Wealthachiever247
             </h2>
@@ -212,7 +218,6 @@ const Landing = () => {
         {/* Scrolling track */}
         <div className="relative">
           <div className="flex animate-scroll gap-5">
-            {/* Duplicate the list so the scroll loops seamlessly */}
             {[...testimonials, ...testimonials].map((item, index) => (
               <div
                 key={index}
@@ -229,11 +234,18 @@ const Landing = () => {
                 </p>
 
                 <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
-                  <div>
-                    <p className="text-sm font-bold text-slate-900">
-                      {item.name}
-                    </p>
-                    <p className="text-xs text-slate-500">{item.role}</p>
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="h-10 w-10 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="text-sm font-bold text-slate-900">
+                        {item.name}
+                      </p>
+                      <p className="text-xs text-slate-500">{item.role}</p>
+                    </div>
                   </div>
                   <div className="rounded-lg bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-600">
                     {item.amount}
