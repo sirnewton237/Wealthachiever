@@ -20,21 +20,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* First page when the app opens */}
+        <Route path="/" element={<Register />} />
+
         {/* Auth Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Dashboard Routes */}
-        <Route
-          path="/"
-          element={
-            <DashboardLayout>
-              <Overview />
-            </DashboardLayout>
-          }
-        />
-
         <Route
           path="/dashboard"
           element={
