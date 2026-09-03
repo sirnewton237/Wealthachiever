@@ -8,7 +8,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../store/auth/authStore";
+import { useAuth } from "../../../store/auth/authstore";
 
 const Login = () => {
   const navigate = useNavigate();
