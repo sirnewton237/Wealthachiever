@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   ShieldCheck,
@@ -9,13 +9,14 @@ import {
   Star,
 } from "lucide-react";
 
-const testimonials = [
+const initialTestimonials = [
   {
     name: "Thabo Molefe",
     role: "Young Professional",
     amount: "R15,000",
     text: "I successfully withdrew R15,000 after my first investment cycle. The process was smooth and transparent.",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
+    secondsAgo: 7, // 7 seconds ago
   },
   {
     name: "Naledi Khumalo",
@@ -23,6 +24,7 @@ const testimonials = [
     amount: "R150,000",
     text: "Withdrew R150,000 from my portfolio. Wealthachiever247 has completely changed how I manage my money.",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
+    secondsAgo: 120, // 2 mins ago
   },
   {
     name: "Johan van der Berg",
@@ -30,6 +32,7 @@ const testimonials = [
     amount: "R200,000",
     text: "Just received my R200,000 withdrawal. Reliable platform with real results.",
     image: "https://randomuser.me/api/portraits/men/75.jpg",
+    secondsAgo: 5, // just now / few seconds
   },
   {
     name: "Ayanda Dlamini",
@@ -37,6 +40,7 @@ const testimonials = [
     amount: "R7,000",
     text: "As a student I started small and already withdrew R7,000. Highly recommend!",
     image: "https://randomuser.me/api/portraits/women/68.jpg",
+    secondsAgo: 300, // 5 mins ago
   },
   {
     name: "Lerato Mokoena",
@@ -44,6 +48,7 @@ const testimonials = [
     amount: "R10,000",
     text: "Successful withdrawal of R10,000. The dashboard is easy to use and very clear.",
     image: "https://randomuser.me/api/portraits/women/65.jpg",
+    secondsAgo: 45,
   },
   {
     name: "Sipho Nkosi",
@@ -51,6 +56,7 @@ const testimonials = [
     amount: "R170,000",
     text: "Withdrew R170,000 without any issues. This platform delivers on its promises.",
     image: "https://randomuser.me/api/portraits/men/22.jpg",
+    secondsAgo: 180,
   },
   {
     name: "Fatima Abrahams",
@@ -58,6 +64,7 @@ const testimonials = [
     amount: "R1,800",
     text: "Even my first small withdrawal of R1,800 came through quickly. Trustworthy service.",
     image: "https://randomuser.me/api/portraits/women/33.jpg",
+    secondsAgo: 20,
   },
   {
     name: "Pieter Botha",
@@ -65,10 +72,39 @@ const testimonials = [
     amount: "R50,000",
     text: "Another successful withdrawal of R50,000. Consistent and professional.",
     image: "https://randomuser.me/api/portraits/men/41.jpg",
+    secondsAgo: 90,
   },
 ];
 
+// Convert seconds into readable time
+const formatTimeAgo = (seconds) => {
+  if (seconds < 10) return "just now";
+  if (seconds < 60) return `${seconds} sec ago`;
+  if (seconds < 3600) {
+    const mins = Math.floor(seconds / 60);
+    return mins === 1 ? "1 min ago" : `${mins} mins ago`;
+  }
+  const hours = Math.floor(seconds / 3600);
+  return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
+};
+
 const Landing = () => {
+  const [testimonials, setTestimonials] = useState(initialTestimonials);
+
+  // Update the times every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestimonials((prev) =>
+        prev.map((item) => ({
+          ...item,
+          secondsAgo: item.secondsAgo + 1,
+        }))
+      );
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Navbar */}
@@ -215,7 +251,6 @@ const Landing = () => {
           </div>
         </div>
 
-        {/* Scrolling track */}
         <div className="relative">
           <div className="flex animate-scroll gap-5">
             {[...testimonials, ...testimonials].map((item, index) => (
@@ -223,10 +258,15 @@ const Landing = () => {
                 key={index}
                 className="w-[320px] shrink-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
               >
-                <div className="flex items-center gap-1 text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} fill="currentColor" />
-                  ))}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1 text-amber-400">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} fill="currentColor" />
+                    ))}
+                  </div>
+                  <span className="text-xs font-medium text-slate-400">
+                    {formatTimeAgo(item.secondsAgo)}
+                  </span>
                 </div>
 
                 <p className="mt-4 text-sm leading-6 text-slate-600">
@@ -277,15 +317,10 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Animation styles */}
       <style>{`
         @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         .animate-scroll {
           animation: scroll 40s linear infinite;
