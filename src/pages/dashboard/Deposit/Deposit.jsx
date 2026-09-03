@@ -14,7 +14,8 @@ const Deposit = () => {
     const email = user?.email || "unknown@email.com";
     const message = `Hi Wealthachiever247, I am registered with the email ${email} and I am willing to make a deposit of R${Number(amount).toLocaleString()} into the Wealthachiever247 platform.`;
 
-    const whatsappUrl = `https://wa.me/8053773486?text=${encodeURIComponent(message)}`;
+    // Updated WhatsApp number
+    const whatsappUrl = `https://wa.me/2348166597856?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
